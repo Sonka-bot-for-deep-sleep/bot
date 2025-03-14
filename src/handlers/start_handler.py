@@ -33,7 +33,7 @@ USER_IS_REGISTER_TEXT = (
 async def start_handler(message: Message) -> None:
     user = await get_user_by_tg_id(message.from_user.id)
     if user is None:
-        await message.answer(USER_IS_REGISTER_TEXT)
-    else:
         await message.answer(USER_NOT_REGISTER_TEXT)
+    else:
+        await message.answer(USER_IS_REGISTER_TEXT)
         
