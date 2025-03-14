@@ -1,6 +1,7 @@
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 from aiogram import Router
+from api.user_api import get_user_by_tg_id
 
 router = Router()
 
@@ -30,4 +31,9 @@ USER_IS_REGISTER_TEXT = (
 
 @router.message(CommandStart())
 async def start_handler(message: Message) -> None:
-    await message.answer(USER_NOT_REGISTER_TEXT)
+    user = await get_user_by_tg_id(message.from_user.id)
+    if user is None:
+        await message.answer(USER_IS_REGISTER_TEXT)
+    else:
+        await message.answer(USER_NOT_REGISTER_TEXT)
+        

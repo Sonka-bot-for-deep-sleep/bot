@@ -1,0 +1,5 @@
+INTERPETATOR=python3
+DIR_MAIN_PY=./src/main.py
+
+run:
+	${INTERPETATOR} ${DIR_MAIN_PY}
